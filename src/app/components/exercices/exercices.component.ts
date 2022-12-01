@@ -25,7 +25,7 @@ export class ExercicesComponent implements OnInit {
     )
   }
 
-  saveClient() {
+  saveVille() {
     this.submitted=true;
     if(this.villeFormGroup?.invalid) alert("Encodage invalide")
     else {
