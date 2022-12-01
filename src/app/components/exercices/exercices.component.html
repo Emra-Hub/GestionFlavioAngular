@@ -1,7 +1,7 @@
 <p>exercices works!</p>
 
-<div classe="container">
-  <form [formGroup]="villeFormGroup" *ngIf="villeFormGroup" class="container">
+<div class="container">
+  <form [formGroup]="villeFormGroup" *ngIf="villeFormGroup">
     <div class="form-group">
       <label>Nom</label>
       <input type="text" formControlName="nom" class="form-control" [ngClass]="{'is-invalid':submitted && villeFormGroup.controls.nom.errors, 'is-valid':submitted && !villeFormGroup.controls.nom.errors}">
