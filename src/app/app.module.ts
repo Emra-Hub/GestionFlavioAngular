@@ -11,6 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ExercicesComponent } from './components/exercices/exercices.component';
 import { NewvilleComponent } from './components/newville/newville.component';
+import { EditvilleComponent } from './components/editville/editville.component';
+import { EditcoureurComponent } from './components/editcoureur/editcoureur.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NewvilleComponent } from './components/newville/newville.component';
     VillesComponent,
     CoureursComponent,
     ExercicesComponent,
-    NewvilleComponent
+    NewvilleComponent,
+    EditvilleComponent,
+    EditcoureurComponent
   ],
     imports: [
         BrowserModule,

@@ -1,6 +1,11 @@
 <div class="container">
   <form [formGroup]="villeFormGroup" *ngIf="villeFormGroup">
     <div class = "form-group">
+      <label>IdVille</label>
+      <input type ="text" class="form-control" formControlName="idville" readonly>
+    </div>
+
+    <div class = "form-group">
       <label>Nom</label>
       <input type ="text" class="form-control" formControlName="nom" [ngClass]="{'is-invalid': submitted && villeFormGroup.controls.nom.errors, 'is-valid':submitted && !villeFormGroup.controls.nom.errors}">
       <div *ngIf="submitted && villeFormGroup.controls.nom.errors" class="invalid-feedback">
@@ -41,8 +46,40 @@
     </div>
 
     <br>
-    <button (click)="saveVille()" class="btn btn-success">
-      Sauvegarder
+    <button (click)="onUpdateVille()" class="btn btn-success">
+      Mettre à jour
+    </button>
+
+    <button (click)="onShowCoureursVille()" class="btn btn-success">
+      Coureur
     </button>
   </form>
 </div>
+
+<ng-container *ngIf="coureurs" >
+  <ng-container *ngIf="coureurs.length>0 else vide">
+    <table class="table">
+      <thead>
+      <th>IdCoureur</th>
+      <th>Matricule</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>DateNaissance</th>
+      <th>Nationalité</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let co of coureurs">
+        <td>{{co.idcoureur}}</td>
+        <td>{{co.matricule}}</td>
+        <td>{{co.nom}}</td>
+        <td>{{co.prenom}}</td>
+        <td>{{co.datenaiss | date:'dd-MM-yyyy'}}</td>
+        <td>{{co.nationalite}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #vide>
+    <br><div>Aucun coureur habitant dans cette ville</div>
+  </ng-template>
+</ng-container>

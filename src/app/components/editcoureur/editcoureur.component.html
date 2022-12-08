@@ -1,0 +1,74 @@
+<div class="container" *ngIf="deleted == false">
+  <form [formGroup]="coureurFormGroup" *ngIf="coureurFormGroup">
+    <div class = "form-group">
+      <label>IdCoureur</label>
+      <input type ="text" class="form-control" formControlName="idcoureur" readonly>
+    </div>
+
+    <div class = "form-group">
+      <label>Matricule</label>
+      <input type ="text" class="form-control" formControlName="matricule" [ngClass]="{'is-invalid': submitted && coureurFormGroup.controls.matricule.errors, 'is-valid':submitted && !coureurFormGroup.controls.matricule.errors}">
+      <div *ngIf="submitted && coureurFormGroup.controls.matricule.errors" class="invalid-feedback">
+        <div *ngIf="coureurFormGroup.controls.matricule.errors.required">
+          Matricule obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Nom</label>
+      <input type ="text" class="form-control" formControlName="nom" [ngClass]="{'is-invalid': submitted && coureurFormGroup.controls.nom.errors, 'is-valid':submitted && !coureurFormGroup.controls.nom.errors}">
+      <div *ngIf="submitted &&  coureurFormGroup.controls.nom.errors" class ="invalid-feedback">
+        <div *ngIf="coureurFormGroup.controls.nom.errors.required">
+          Nom obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Prénom</label>
+      <input type ="text" class="form-control" formControlName="prenom" [ngClass]="{'is-invalid': submitted && coureurFormGroup.controls.prenom.errors, 'is-valid':submitted && !coureurFormGroup.controls.prenom.errors}">
+      <div *ngIf="submitted &&  coureurFormGroup.controls.prenom.errors" class ="invalid-feedback">
+        <div *ngIf="coureurFormGroup.controls.prenom.errors.required">
+          Prénom obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Date naissance</label>
+      <input type ="text" class="form-control" formControlName="datenaiss" [ngClass]="{'is-invalid': submitted && coureurFormGroup.controls.datenaiss.errors, 'is-valid':submitted && !coureurFormGroup.controls.datenaiss.errors}">
+      <div *ngIf="submitted &&  coureurFormGroup.controls.datenaiss.errors" class="invalid-feedback">
+        <div *ngIf="coureurFormGroup.controls.datenaiss.errors.required">
+          Date naissance obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Nationalité</label>
+      <input type ="text" class="form-control" formControlName="nationalite" [ngClass]="{'is-invalid': submitted && coureurFormGroup.controls.nationalite.errors, 'is-valid':submitted && !coureurFormGroup.controls.nationalite.errors}">
+      <div *ngIf="submitted &&  coureurFormGroup.controls.nationalite.errors" class="invalid-feedback">
+        <div *ngIf="coureurFormGroup.controls.nationalite.errors.required">
+          Nationalité obligatoire
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <ul class="navbar navbar-nav">
+        <li class="nav-item">
+          <button (click)="onUpdateCoureur()" class="btn btn-success">
+            Mettre à jour
+          </button>
+        </li>
+        <li class="nav-item">
+          <button (click)="onDeleteCoureur()" class="btn btn-success">
+            Supprimer
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </form>
+</div>

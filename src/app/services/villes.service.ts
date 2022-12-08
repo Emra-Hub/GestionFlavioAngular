@@ -23,11 +23,11 @@ export class VillesService {
     return this.httpClient.delete<void>(this.host+"/villes/"+ville.idville);
   }
 
-  save(v: Ville): Observable<Ville>{
-    return this.httpClient.post<Ville>(this.host +"/villes/",v);
+  save(v:Ville): Observable<Ville>{
+    return this.httpClient.post<Ville>(this.host +"/villes", v);
   }
 
-  updateVille(v: Ville): Observable<Ville>{
-    return this.httpClient.put<Ville>(this.host +"/villes/"+v.idville,v);
+  updateVille(v:Ville): Observable<Ville>{
+    return this.httpClient.put<Ville>(this.host +"/villes/"+v.idville, v);
   }
 }

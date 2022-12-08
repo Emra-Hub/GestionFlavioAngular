@@ -1,3 +1,56 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+        <input ngModel name="nom" type="text" >
+        <button class="btn btn-sm btn-outline-info m-lg-2">
+          <span class = "fa fa-search"></span>
+        </button>
+      </form>
+    </li>
+    <li>
+      <button (click)="onNewVille()" class="btn btn-sm btn-outline-infoms-2">New</button>
+    </li>
+  </ul>
+</nav>
+
+<ng-container *ngIf="villes">
+  <ng-container *ngIf="villes.length>0 else inconnu">
+    <table class="table">
+      <thead>
+      <th>IdVille</th>
+      <th>Nom</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Pays</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let v of villes">
+        <td>{{v.idville}}</td>
+        <td>{{v.nom}}</td>
+        <td>{{v.latitude}}</td>
+        <td>{{v.longitude}}</td>
+        <td>{{v.pays}}</td>
+        <td>
+          <button (click)=onDelete(v) class="btn btn-danger">
+            <span class = "fa fa-trash-o"></span>
+          </button>
+        </td>
+        <td>
+          <button (click)=onEdit(v) class="btn btn-danger">
+            <span class = "fa fa-edit"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    <div>Nom inconnu</div>
+  </ng-template>
+</ng-container>
+
+<!--
 <div>
   Numero de la ville :  <input type="text" [(ngModel)]="numrech"><br>
   <button (click)="recherche()">recherche</button>
@@ -7,7 +60,7 @@
 
 <div *ngIf="ville"><p>Le nom de la ville est : {{ville.nom}}</p></div>
 
-<!----------------------------------------------------------->
+-----------------------------------------------------------
 
 <form #f="ngForm" (ngSubmit)="rechParForm(f.value)">
   Numéro : <input type="text" ngModel name="numero">
@@ -22,7 +75,7 @@
   <div>Inconnu</div><br>
 </ng-template>
 
-<!----------------------------------------------------------->
+-----------------------------------------------------------
 
 <form #f2="ngForm" (ngSubmit)="rechParNomForm(f2.value)">
   Nom recherché : <input type="text" ngModel name="nom">
@@ -30,10 +83,10 @@
 
 <br>
 
-<ng-template [ngIf]="villesTrouv"> <!--Afin de savoir si l'objet est vide, ne soit pas null-->
-  <ng-template [ngIf]="villesTrouv.length>0" [ngIfElse]="inconnu">
+<ng-template [ngIf]="villes"> //Afin de savoir si l'objet est vide, ne soit pas null
+  <ng-template [ngIf]="villes.length>0" [ngIfElse]="inconnu">
     <ul>
-      <li *ngFor="let vi of villesTrouv">
+      <li *ngFor="let vi of villes">
         {{vi.idville}} - {{vi.nom}} - {{vi.latitude}} - {{vi.longitude}} - {{vi.pays}}
         <button (click)="suppVille(vi)">Supprimer</button>
       </li>
@@ -43,3 +96,4 @@
     <div>Nom inconnu</div>
   </ng-template>
 </ng-template>
+-->

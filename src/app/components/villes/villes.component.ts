@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {VillesService} from "../../services/villes.service";
 import {Ville} from "../../entities/ville.entities";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-villes',
@@ -10,14 +11,52 @@ import {Ville} from "../../entities/ville.entities";
 export class VillesComponent implements OnInit {
   ville:Ville|null=null;
   numrech:number=0;
-  villesTrouv?:Ville[];
+  villes?:Ville[];
 
-  constructor(private villesService:VillesService) { }
+  constructor(private villesService:VillesService, private router:Router) { }
 
   ngOnInit(): void {
-    this.onSearchById(1);
+    //this.onSearchById(1);
   }
 
+  onSearch(value: any) {
+    this.villesService.getVilleNom(value.nom).subscribe({
+      next:data=>{this.villes=data},
+      error:error=> {alert("Erreur : "+error.headers.get("error"))}
+    })
+  }
+
+  onNewVille() {
+    this.router.navigateByUrl("newVille");
+  }
+
+  onEdit(v: Ville) {
+    this.router.navigateByUrl("editVille/"+v.idville);
+  }
+
+  onDelete(v: Ville) {
+    /*let c = confirm('êtes vous sûr de vouloir supprimer ? ');
+    if (c) {
+      this.villesService.deleteVille(v).subscribe(
+        {
+          next: data => {
+            this.onSearch(v); //rafraîchissement de la page actuelle
+            //la solution ci-dessous permet de ne pas recharger la liste à partir du backend
+            /* const index = this.clients?.indexOf(c, 0); //élement à
+            rechercher, position de départ de la recherche
+            alert("index = "+index);
+            if (!(index === undefined) && index > -1) {
+            this.clients?.splice(index, 1);//position de l'élément à
+            ôter,nombre d'éléments à ôter
+            }
+          },
+          error:error=> {alert("Erreur : "+error.headers.get("error"))}
+        }
+      );
+    }*/
+  }
+
+  /*
   onSearchById(idville:number) {
     this.villesService.getVille(idville).subscribe({
       next:data=>alert(data.nom),
@@ -44,7 +83,7 @@ export class VillesComponent implements OnInit {
   rechParNomForm(value: any) {
     let nom:string = value.nom;
     this.villesService.getVilleNom(nom).subscribe({
-      next:data=>{this.villesTrouv=data},
+      next:data=>{this.villes=data},
       error:error=> {alert("Erreur : "+error.headers.get("error"))}
     })
   }
@@ -54,12 +93,12 @@ export class VillesComponent implements OnInit {
       next: data => {
         alert("Record effacé");
         //this.rechParNomForm(v);
-        const index = this.villesTrouv?.indexOf(v,0);
+        const index = this.villes?.indexOf(v,0);
         if ((!(index === undefined)) && index > -1) {
-          this.villesTrouv?.splice(index,1);
+          this.villes?.splice(index,1);
         }
       },
       error: error => {alert("Erreur d'effacement : " + error.headers.get("error"))}
     })
-  }
+  }*/
 }

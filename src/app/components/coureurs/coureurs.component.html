@@ -1,1 +1,7 @@
-<p>coureurs works!</p>
+<form (ngSubmit)="onSearch()">
+  ID du coureur :  <input type="text" name="idcoureur" [(ngModel)]="idcoureur"><br>
+</form>
+
+<div *ngIf="coureur"> <!-- Savoir si coureur est vide ou pas-->
+  <app-editcoureur [coureur]="coureur"></app-editcoureur> <!-- Va afficher le formulaire qui se trouve dans le fichier editcoureur-->
+</div>
