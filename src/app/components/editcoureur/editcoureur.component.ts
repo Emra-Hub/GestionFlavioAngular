@@ -47,7 +47,7 @@ export class EditcoureurComponent implements OnInit {
     let v = confirm("Êtes vous sûr de vouloir supprimer ?");
     if (v) {
       this.coureursServices.deleteCoureur(this.coureurFormGroup?.value).subscribe({
-          next : data => {alert("Mise à jour effectuée") ; this.deleted=true;},
+          next : data => {alert("Suppression effectuée") ; this.deleted=true;},
           error: error=> {alert("Erreur : "+error.headers.get("error"))}
         });
     }

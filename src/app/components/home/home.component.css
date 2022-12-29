@@ -1,0 +1,39 @@
+body
+{
+  background-image:url(../../../assets/course.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment:fixed;
+  height: 585px;
+}
+
+header
+{
+  text-align: center;
+}
+
+.container
+{
+  display: flex;
+  justify-content: center;
+  height: 500px;
+}
+button
+{
+  margin: 10px;
+  margin-right: 50px;
+  width: 180px;
+  height: 60px;
+  background-color: coral;
+}
+
+button:hover:before
+{
+  content:" » ";
+}
+
+button:hover
+{
+  box-shadow: 8px 8px 8px #000000;
+}

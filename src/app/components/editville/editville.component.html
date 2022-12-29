@@ -46,40 +46,50 @@
     </div>
 
     <br>
-    <button (click)="onUpdateVille()" class="btn btn-success">
-      Mettre à jour
-    </button>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <button (click)="onUpdateVille()" class="btn btn-success">
+        Mettre à jour
+      </button>
 
-    <button (click)="onShowCoureursVille()" class="btn btn-success">
-      Coureur
-    </button>
+      <button (click)="onShowCoureursVille()" class="btn btn-success">
+        Coureur
+      </button>
+    </nav>
+    <br>
   </form>
 </div>
 
-<ng-container *ngIf="coureurs" >
-  <ng-container *ngIf="coureurs.length>0 else vide">
-    <table class="table">
-      <thead>
-      <th>IdCoureur</th>
-      <th>Matricule</th>
-      <th>Nom</th>
-      <th>Prenom</th>
-      <th>DateNaissance</th>
-      <th>Nationalité</th>
-      </thead>
-      <tbody>
-      <tr *ngFor="let co of coureurs">
-        <td>{{co.idcoureur}}</td>
-        <td>{{co.matricule}}</td>
-        <td>{{co.nom}}</td>
-        <td>{{co.prenom}}</td>
-        <td>{{co.datenaiss | date:'dd-MM-yyyy'}}</td>
-        <td>{{co.nationalite}}</td>
-      </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <ng-container *ngIf="coureurs" >
+    <ng-container *ngIf="coureurs.length>0 else vide">
+      <table class="table">
+        <thead>
+        <th>IdCoureur</th>
+        <th>Matricule</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>DateNaissance</th>
+        <th>Nationalité</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let co of coureurs">
+          <td>{{co.idcoureur}}</td>
+          <td>{{co.matricule}}</td>
+          <td>{{co.nom}}</td>
+          <td>{{co.prenom}}</td>
+          <td>{{co.datenaiss | date:'dd-MM-yyyy'}}</td>
+          <td>{{co.nationalite}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #vide>
+      <br><div>Aucun coureur habitant dans cette ville</div>
+    </ng-template>
+    <br>
+    <h3>Ajout coureur</h3>
+    <app-newcoureur [viact]="villeFormGroup" (newCoureur)="addCoureur($event)"></app-newcoureur>
   </ng-container>
-  <ng-template #vide>
-    <br><div>Aucun coureur habitant dans cette ville</div>
-  </ng-template>
-</ng-container>
+</div>
+
+

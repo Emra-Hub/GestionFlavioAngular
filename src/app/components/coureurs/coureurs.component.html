@@ -1,6 +1,8 @@
-<form (ngSubmit)="onSearch()">
-  ID du coureur :  <input type="text" name="idcoureur" [(ngModel)]="idcoureur"><br>
-</form>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <form (ngSubmit)="onSearch()">
+    ID du coureur :  <input type="text" name="idcoureur" [(ngModel)]="idcoureur"><br>
+  </form>
+</nav>
 
 <div *ngIf="coureur"> <!-- Savoir si coureur est vide ou pas-->
   <app-editcoureur [coureur]="coureur"></app-editcoureur> <!-- Va afficher le formulaire qui se trouve dans le fichier editcoureur-->

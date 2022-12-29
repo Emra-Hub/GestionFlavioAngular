@@ -35,28 +35,25 @@ export class VillesComponent implements OnInit {
   }
 
   onDelete(v: Ville) {
-    /*let c = confirm('êtes vous sûr de vouloir supprimer ? ');
+    let c = confirm("Êtes vous sûr de vouloir supprimer ?");
     if (c) {
-      this.villesService.deleteVille(v).subscribe(
-        {
-          next: data => {
-            this.onSearch(v); //rafraîchissement de la page actuelle
-            //la solution ci-dessous permet de ne pas recharger la liste à partir du backend
-            /* const index = this.clients?.indexOf(c, 0); //élement à
-            rechercher, position de départ de la recherche
-            alert("index = "+index);
-            if (!(index === undefined) && index > -1) {
-            this.clients?.splice(index, 1);//position de l'élément à
-            ôter,nombre d'éléments à ôter
-            }
-          },
-          error:error=> {alert("Erreur : "+error.headers.get("error"))}
-        }
-      );
-    }*/
+      this.villesService.deleteVille(v).subscribe({
+        next : data => {/*this.onSearch(v);*/
+          //rafraîchissement de la page actuelle
+          //la solution ci-dessous permet de ne pas recharger la liste à partir du backend
+          const index = this.villes?.indexOf(v, 0); //élement à rechercher, position de départ de la recherche
+          alert("index = "+index);
+          if (!(index === undefined) && index > -1) {
+            this.villes?.splice(index, 1);//position de l'élément à ôter,nombre d'éléments à ôter
+          };
+          alert("Suppression effectuée");},
+        error: error=> {alert("Erreur : "+error.headers.get("error"))}
+      });
+    }
   }
 
-  /*
+  /* Ce qu'on avait fait à l'introduction du cours
+
   onSearchById(idville:number) {
     this.villesService.getVille(idville).subscribe({
       next:data=>alert(data.nom),

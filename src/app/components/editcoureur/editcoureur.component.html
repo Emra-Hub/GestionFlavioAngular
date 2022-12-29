@@ -37,7 +37,7 @@
 
     <div class = "form-group">
       <label>Date naissance</label>
-      <input type ="text" class="form-control" formControlName="datenaiss" [ngClass]="{'is-invalid': submitted && coureurFormGroup.controls.datenaiss.errors, 'is-valid':submitted && !coureurFormGroup.controls.datenaiss.errors}">
+      <input type ="date" class="form-control" formControlName="datenaiss" [ngClass]="{'is-invalid': submitted && coureurFormGroup.controls.datenaiss.errors, 'is-valid':submitted && !coureurFormGroup.controls.datenaiss.errors}">
       <div *ngIf="submitted &&  coureurFormGroup.controls.datenaiss.errors" class="invalid-feedback">
         <div *ngIf="coureurFormGroup.controls.datenaiss.errors.required">
           Date naissance obligatoire

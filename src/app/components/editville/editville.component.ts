@@ -48,4 +48,8 @@ export class EditvilleComponent implements OnInit {
       error : error => alert("Erreur de recherche de coureurs")
     });
   }
+
+  addCoureur($event: Coureur) {
+    this.coureurs?.push($event);
+  }
 }
