@@ -52,6 +52,14 @@ export class VillesComponent implements OnInit {
     }
   }
 
+  //Question 2
+  onSearchPays(value: any) {
+    this.villesService.getVillePays(value.pays).subscribe({
+      next:data=>{this.villes=data},
+      error:error=> {alert("Erreur : "+error.headers.get("error"))}
+    })
+  }
+
   /* Ce qu'on avait fait à l'introduction du cours
 
   onSearchById(idville:number) {

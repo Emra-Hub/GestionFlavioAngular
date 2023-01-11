@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <form (ngSubmit)="onSearch()" class="form-inline">
+        <input placeholder="Nom du coureur" [(ngModel)]="nom" name="nom" type="text">
+        <button class="btn btn-sm btn-outline-info m-lg-2">
+          <span class = "fa fa-search"> Recherche</span>
+        </button>
+      </form>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <ng-container *ngIf="coureurs">
+    <ng-container *ngIf="coureurs.length>0 else inconnu">
+      <table class="table">
+        <thead>
+        <th>Id</th>
+        <th>Nom</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of coureurs">
+          <td>{{c.ville.idville}}</td>
+          <td>{{c.ville.nom}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #inconnu>
+      <div>Aucun coureur trouvé</div>
+    </ng-template>
+  </ng-container>
+</div>

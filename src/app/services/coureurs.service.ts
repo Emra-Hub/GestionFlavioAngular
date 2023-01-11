@@ -32,4 +32,9 @@ export class CoureursService {
     c.ville=v;
     return this.httpClient.post<Coureur>(this.host+"/coureurs/", c);
   }
+
+  //Question 1
+  getCoureurByNom(nom:string):Observable<Coureur[]> {
+    return this.httpClient.get<Coureur[]>(this.host+"/coureurs/nom="+nom);
+  }
 }

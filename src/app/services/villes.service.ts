@@ -30,4 +30,9 @@ export class VillesService {
   updateVille(v:Ville): Observable<Ville>{
     return this.httpClient.put<Ville>(this.host +"/villes/"+v.idville, v);
   }
+
+  //Question 2
+  getVillePays(pays:string):Observable<Ville[]> {
+    return this.httpClient.get<Ville[]>(this.host+"/villes/pays="+pays);
+  }
 }

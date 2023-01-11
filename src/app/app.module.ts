@@ -14,6 +14,7 @@ import { NewvilleComponent } from './components/newville/newville.component';
 import { EditvilleComponent } from './components/editville/editville.component';
 import { EditcoureurComponent } from './components/editcoureur/editcoureur.component';
 import { NewcoureurComponent } from './components/newcoureur/newcoureur.component';
+import { ExamenComponent } from './components/examen/examen.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NewcoureurComponent } from './components/newcoureur/newcoureur.componen
     NewvilleComponent,
     EditvilleComponent,
     EditcoureurComponent,
-    NewcoureurComponent
+    NewcoureurComponent,
+    ExamenComponent
   ],
     imports: [
         BrowserModule,
